@@ -4,13 +4,22 @@ using System.Linq;
 using StoffdPatterns.AbstractFactory;
 using StoffdPatterns.Builder;
 using StoffdPatterns.Command;
+using StoffdPatterns.Observer;
 using StoffdPatterns.Prototype;
 using StoffdPatterns.Strategy;
 
 namespace StoffdPatterns {
     class Program {
         static void Main(string[] args) {
+            
+            Stock stock = new Stock();
+            Bank bank = new Bank("Unit Bank");
+            bank.Subscribe(stock);
+            Broker broker = new Broker("Иван Иванович");
+            broker.Subscribe(stock);
+            stock.Market();
 
+            return;
             new CommandClient().Start();
             return;
             //----------------------------------------------------
